@@ -199,8 +199,11 @@ public class Tablero extends JPanel{
                          ficha.setPosicionyFinal(yfinal);
 
                          Dado.ValorDado = 0;
+                         ficha.setNoFila(ficha.getNoFila()+1);
                          AvanzarRonda(ficha);
-                         System.out.println("Comprobado" + i + "   " + j);
+                         ficha.setNoFila(ficha.getNoFila()+1);
+                         //AvanzarImpar(xfinal,yfinal,ficha.getPosiciony(),ficha.getPosicionx(),0,true,ficha);
+                         System.out.println("Comprobado" + z + "   " + j);
                          System.out.println("posicion x " + xfinal);
                          System.out.println("posicion y" + yfinal);
                     }
@@ -256,16 +259,20 @@ public class Tablero extends JPanel{
             int xFinal = ficha.getPosicionx();
             int yFinal = ficha.getPosiciony();
             Dado.ValorDado = Cantidad;
-            
-                System.out.println("xfinal" + xFinal);
-                System.out.println("yfinal " + yFinal);
-                System.out.println("Valor dado " + Dado.ValorDado);
-            AvanzarImpar(xFinal,yFinal,y,x,0,true,ficha);
-                System.out.println("xfinal" + xFinal);
-                System.out.println("yfinal " + yFinal);
-                System.out.println("xfinalR" + ficha.getPosicionx());
-                System.out.println("yfinalR" + ficha.getPosiciony());
+            if(ficha.getNoFila()%2 == 0){
+                if(res >= 0){
+                    System.out.println("xfinal" + xFinal);
+                    System.out.println("yfinal " + yFinal);
+                    System.out.println("Valor dado " + Dado.ValorDado);
+                    AvanzarImpar(xFinal,yFinal,y,x,0,true,ficha);
+                    System.out.println("xfinal" + xFinal);
+                    System.out.println("yfinal " + yFinal);
+                    System.out.println("xfinalR" + ficha.getPosicionx());
+                    System.out.println("yfinalR" + ficha.getPosiciony());
+                }
+            }else{
                 
+            }
             }
         }
         
