@@ -15,7 +15,7 @@ public  class Jugar extends javax.swing.JFrame {
     public  Tablero Tablero1 = new Tablero(6,6);
     public static int Ronda;
     private Ficha[] fichas;
-    int Jugador = 0;
+    static int Jugador = 0;
     
     public Jugar(int NoJugadores,String Direccion) {
         this.NoJugadores = NoJugadores;
@@ -97,13 +97,13 @@ public  class Jugar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AvanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AvanzarActionPerformed
-        
+        Inf.setText("Turno " + Jugones[Jugador].getNombre());
         if(Jugones[Jugador].getFicha().Ronda == 0){
             Tablero1.Avanzar(Jugones[Jugador].getFicha());
         }
         else{
             Tablero1.AvanzarRonda(Jugones[Jugador].getFicha());
-            Tablero1.Comprobar(Jugones[Jugador].getFicha());
+            Tablero1.Comprobar(Jugones[Jugador].getFicha(),Inf);
             //if(Dado.ValorDado == 6){
             //Tablero1.AvanzarRonda(fichas[Jugador]);
             //}
@@ -112,7 +112,7 @@ public  class Jugar extends javax.swing.JFrame {
         Text.setText("Ronda: " + Ronda);
         
         FinalizarPartida();
-        Inf.setText("Turno " + Jugones[Jugador].getNombre());
+        
         if(Jugador>= (NoJugadores-1)){
             
         Jugador = 0;
