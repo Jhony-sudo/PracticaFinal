@@ -45,6 +45,7 @@ public  class Jugar extends javax.swing.JFrame {
             }
         });
 
+        Text.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         Text.setText("jLabel1");
         Text.setText("Ronda: " + Ronda);
 
@@ -62,35 +63,31 @@ public  class Jugar extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(314, 314, 314)
-                .addComponent(Text)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 571, Short.MAX_VALUE)
-                .addComponent(Avanzar1)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(322, 819, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Inf, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Avanzar)
-                        .addGap(85, 85, 85))))
+                    .addComponent(Inf, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Text, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(Avanzar1)
+                            .addContainerGap())
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(Avanzar)
+                            .addGap(109, 109, 109)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Text)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Avanzar1)))
-                .addGap(242, 242, 242)
+                .addContainerGap()
+                .addComponent(Avanzar1)
+                .addGap(35, 35, 35)
+                .addComponent(Text)
+                .addGap(191, 191, 191)
                 .addComponent(Avanzar)
-                .addGap(54, 54, 54)
-                .addComponent(Inf, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(Inf, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(263, Short.MAX_VALUE))
         );
 
         pack();
@@ -193,6 +190,10 @@ public  class Jugar extends javax.swing.JFrame {
         
         if(colorfinal == red){
             Jugones[0].setPartidasGanadas(Jugones[0].getPartidasGanadas() + 1);
+        }
+        if(colorfinal == Color.BLUE){
+            Jugones[1].setPartidasGanadas(Jugones[1].getPartidasGanadas() + 1);
+        
         }
         return res;
        
