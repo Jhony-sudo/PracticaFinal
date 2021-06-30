@@ -6,6 +6,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import manejoarchivo.LeerArchivo;
 
@@ -180,7 +181,7 @@ public class Tablero extends JPanel{
         
     }
     
-    public void Comprobar(Ficha ficha){
+    public void Comprobar(Ficha ficha,JLabel Inf){
         int x = ficha.getPosicionx();
         int y = ficha.getPosiciony();
         int xfinal;
@@ -202,10 +203,6 @@ public class Tablero extends JPanel{
                          ficha.setNoFila(ficha.getNoFila()+1);
                          AvanzarRonda(ficha);
                          ficha.setNoFila(ficha.getNoFila()+1);
-                         //AvanzarImpar(xfinal,yfinal,ficha.getPosiciony(),ficha.getPosicionx(),0,true,ficha);
-                         System.out.println("Comprobado" + z + "   " + j);
-                         System.out.println("posicion x " + xfinal);
-                         System.out.println("posicion y" + yfinal);
                     }
                 }
             }
@@ -249,13 +246,14 @@ public class Tablero extends JPanel{
             Dado.ValorDado = Cantidad;
             AvanzarRonda(ficha);
             Tabla[x][y].setBackground(Tabla[0][0].getBackground());
-            Comprobar(ficha);
+            Comprobar(ficha,Inf);
         }
             if(Tabla[x][y].getText().substring(0,5).equals("ATRAS")){
             System.out.println("Entreee Retrocede");
             int Cantidad = Integer.parseInt(Tabla[x][y].getText().substring(5));
             int Direccion = ficha.getNoFila();
             int res = ficha.getPosiciony() - Cantidad;
+            int res2 = ficha.getPosiciony() + Cantidad;
             int xFinal = ficha.getPosicionx();
             int yFinal = ficha.getPosiciony();
             Dado.ValorDado = Cantidad;
@@ -265,15 +263,52 @@ public class Tablero extends JPanel{
                     System.out.println("yfinal " + yFinal);
                     System.out.println("Valor dado " + Dado.ValorDado);
                     AvanzarImpar(xFinal,yFinal,y,x,0,true,ficha);
+                    Comprobar(ficha,Inf);
                     System.out.println("xfinal" + xFinal);
                     System.out.println("yfinal " + yFinal);
                     System.out.println("xfinalR" + ficha.getPosicionx());
                     System.out.println("yfinalR" + ficha.getPosiciony());
+                }else{
+                    Tabla[x][y].setBackground(Tabla[0][0].getBackground());
+                    Tabla[2][4].setBackground(ficha.getColorFicha());
+                    ficha.setPosicionx(2);
+                    ficha.setPosiciony(4);
+                    ficha.setPosicionxFinal(2);
+                    ficha.setPosicionyFinal(4);
+                    ficha.setNoFila(ficha.getNoFila() + 1);
+                    
+                    Comprobar(ficha,Inf);
                 }
             }else{
-                
+                if(res2 < Columnas){
+                    ficha.setPosicionxFinal(xFinal);
+                    ficha.setPosiciony(yFinal);
+                    ficha.setNoFila(ficha.getNoFila() + 1);
+                    AvanzarRonda(ficha);
+                    ficha.setNoFila(ficha.getNoFila() + 1);
+                    Comprobar(ficha,Inf);
+                }if(res2 > (Columnas-1)){
+                    Tabla[x][y].setBackground(Tabla[0][0].getBackground());
+                    Tabla[1][3].setBackground(ficha.getColorFicha());
+                    ficha.setPosicionx(1);
+                    ficha.setPosiciony(3);
+                    ficha.setPosicionxFinal(1);
+                    ficha.setPosicionyFinal(3);
+                    ficha.setNoFila(ficha.getNoFila() + 1);
+                    Comprobar(ficha,Inf);
+                    
+                }
             }
             }
+        }
+        
+        if(Tabla[x][y].getText().equals("TIRADADO")){
+            Jugar.Jugador--;
+            Inf.setText("Turno extra");
+            
+        }
+        if(Tabla[x][y].getText().equals("PIERDETURNO")){
+            
         }
         
     }
