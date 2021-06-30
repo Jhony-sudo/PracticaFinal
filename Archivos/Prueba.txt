@@ -1,0 +1,8 @@
+tablero(8,7)
+retrocede(0,1,4)
+tiradados(0,3)
+subida(0,4,2,6)
+retrocede(0,6,6)
+avanza(0,6,1)
+avanza(1,0,4)
+avanza(1,1,7)
